@@ -2,28 +2,28 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "trygsharedmbstatsAdminLogin": {
+    "dbAdminLogin": {
       "type": "string",
       "minLength": 1
     },
-    "trygsharedmbstatsAdminLoginPassword": {
+    "dbAdminLoginPassword": {
       "type": "securestring"
     },
-    "trygsharedmbstatsdbInstanceName": {
+    "dbInstanceName": {
       "type": "string",
       "minLength": 1
     },
-    "trygsharedmbstatsdbName": {
+    "dbName": {
       "type": "string",
       "minLength": 1
     },
  
-    "trygsharedmbstatsdbCollation": {
+    "dbCollation": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
     },
-    "trygsharedmbstatsdbEdition": {
+    "dbEdition": {
       "type": "string",
       "defaultValue": "Basic",
       "allowedValues": [
@@ -32,7 +32,7 @@
         "Premium"
       ]
     },
-    "trygsharedmbstatsdbRequestedServiceObjectiveName": {
+    "dbRequestedServiceObjectiveName": {
       "type": "string",
       "defaultValue": "Basic",
       "allowedValues": [
@@ -51,24 +51,24 @@
   },
 
   "variables": {
-    "trygsharedmbstatsAdminLoginPassword": "[concat('P', uniqueString(resourceGroup().id, '224F5A8B-51DB-46A3-A7C8-59B0DD584A41'), 'x', '!')]",
-    "trygsharedmbstatsdbmaxSizeBytes": "2147483648"
+    "dbAdminLoginPassword": "[concat('P', uniqueString(resourceGroup().id, '224F5A8B-51DB-46A3-A7C8-59B0DD584A41'), 'x', '!')]",
+    "dbmaxSizeBytes": "2147483648"
 
   },
 
   "resources": [
     {
-      "name": "[parameters('trygsharedmbstatsdbInstanceName')]",
+      "name": "[parameters('dbInstanceName')]",
       "type": "Microsoft.Sql/servers",
       "location": "[resourceGroup().location]",
       "apiVersion": "2014-04-01-preview",
       "dependsOn": [],
       "tags": {
-        "displayName": "[parameters('trygsharedmbstatsdbInstanceName')]"
+        "displayName": "[parameters('dbInstanceName')]"
       },
       "properties": {
-        "administratorLogin": "[parameters('trygsharedmbstatsAdminLogin')]",
-        "administratorLoginPassword": "[variables('trygsharedmbstatsAdminLoginPassword')]"
+        "administratorLogin": "[parameters('dbAdminLogin')]",
+        "administratorLoginPassword": "[variables('dbAdminLoginPassword')]"
       },
       "resources": [
         {
@@ -77,7 +77,7 @@
           "location": "[resourceGroup().location]",
           "apiVersion": "2014-04-01-preview",
           "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers', parameters('trygsharedmbstatsdbInstanceName'))]"
+            "[resourceId('Microsoft.Sql/servers', parameters('dbInstanceName'))]"
           ],
           "properties": {
             "startIpAddress": "0.0.0.0",
@@ -85,21 +85,21 @@
           }
         },
         {
-          "name": "[parameters('trygsharedmbstatsdbName')]",
+          "name": "[parameters('dbName')]",
           "type": "databases",
           "location": "[resourceGroup().location]",
           "apiVersion": "2014-04-01-preview",
           "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers', parameters('trygsharedmbstatsdbInstanceName'))]"
+            "[resourceId('Microsoft.Sql/servers', parameters('dbInstanceName'))]"
           ],
           "tags": {
-            "displayName": "[parameters('trygsharedmbstatsdbName')]"
+            "displayName": "[parameters('dbName')]"
           },
           "properties": {
-            "collation": "[parameters('trygsharedmbstatsdbCollation')]",
-            "edition": "[parameters('trygsharedmbstatsdbEdition')]",
-            "maxSizeBytes": "[variables('trygsharedmbstatsdbmaxSizeBytes')]",
-            "requestedServiceObjectiveName": "[parameters('trygsharedmbstatsdbRequestedServiceObjectiveName')]"
+            "collation": "[parameters('dbCollation')]",
+            "edition": "[parameters('dbEdition')]",
+            "maxSizeBytes": "[variables('dbmaxSizeBytes')]",
+            "requestedServiceObjectiveName": "[parameters('dbRequestedServiceObjectiveName')]"
           }
         }
       ]
@@ -109,7 +109,7 @@
   "outputs": {
     "sqlserverAdminPassword": {
       "type": "string",
-      "value": "[variables('trygsharedmbstatsAdminLoginPassword')]"
+      "value": "[variables('dbAdminLoginPassword')]"
     }
 
   }
