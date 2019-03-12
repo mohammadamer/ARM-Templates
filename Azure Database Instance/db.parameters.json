@@ -5,23 +5,23 @@
     "trygsharedmbstatsAdminLogin": {
       "value": "dbadmin"
     },
-    "trygsharedmbstatsAdminLoginPassword": {
+    "dbAdminLoginPassword": {
       "value": ""
     },
-    "trygsharedmbstatsdbInstanceName": {
+    "dbInstanceName": {
       "value": "dev-azure-sql-oauth-sql"
     },
-    "trygsharedmbstatsdbName": {
+    "dbName": {
       "value": "dev-azure-sql-oauth-db"
     },
   
-    "trygsharedmbstatsdbCollation": {
+    "dbCollation": {
       "value": "SQL_Latin1_General_CP1_CI_AS"
     },
-    "trygsharedmbstatsdbEdition": {
+    "dbEdition": {
       "value": "Basic"
     },
-    "trygsharedmbstatsdbRequestedServiceObjectiveName": {
+    "dbRequestedServiceObjectiveName": {
       "value": "Basic"
     }
   }
