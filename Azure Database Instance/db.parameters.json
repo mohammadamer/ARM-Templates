@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "trygsharedmbstatsAdminLogin": {
+      "value": "dbadmin"
+    },
+    "trygsharedmbstatsAdminLoginPassword": {
+      "value": ""
+    },
+    "trygsharedmbstatsdbInstanceName": {
+      "value": "dev-azure-sql-oauth-sql"
+    },
+    "trygsharedmbstatsdbName": {
+      "value": "dev-azure-sql-oauth-db"
+    },
+  
+    "trygsharedmbstatsdbCollation": {
+      "value": "SQL_Latin1_General_CP1_CI_AS"
+    },
+    "trygsharedmbstatsdbEdition": {
+      "value": "Basic"
+    },
+    "trygsharedmbstatsdbRequestedServiceObjectiveName": {
+      "value": "Basic"
+    }
+  }
+
+}
