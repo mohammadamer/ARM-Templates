@@ -26,7 +26,7 @@
 
 param(
   [string]
- $subscriptionId = "16b47d1e-0273-4889-a00d-a8693b7b9436",
+ $subscriptionId = "YourSubscriptionId",
 
  [string]
  $resourceGroupName = "Development",
